@@ -1,0 +1,138 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Wardrobe API",
+    "description": "API para gerenciamento de roupas e sugest\u00f5es de looks.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://web-production-818a8.up.railway.app"
+    }
+  ],
+  "paths": {
+    "/add": {
+      "post": {
+        "operationId": "addItem",
+        "summary": "Adiciona uma pe\u00e7a ao guarda-roupa",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "categoria": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nome",
+                  "categoria"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pe\u00e7a adicionada com sucesso"
+          }
+        }
+      }
+    },
+    "/items": {
+      "get": {
+        "operationId": "listItems",
+        "summary": "Lista todas as pe\u00e7as do guarda-roupa",
+        "responses": {
+          "200": {
+            "description": "Lista de pe\u00e7as"
+          }
+        }
+      }
+    },
+    "/looks": {
+      "get": {
+        "operationId": "suggestLook",
+        "summary": "Sugere um look com base nas pe\u00e7as existentes",
+        "responses": {
+          "200": {
+            "description": "Look sugerido"
+          }
+        }
+      }
+    },
+    "/reset": {
+      "post": {
+        "operationId": "resetWardrobe",
+        "summary": "Substitui todas as pe\u00e7as por uma nova lista",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roupas": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "nome": {
+                          "type": "string"
+                        },
+                        "categoria": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Guarda-roupa redefinido"
+          }
+        }
+      }
+    },
+    "/remove": {
+      "post": {
+        "operationId": "removeItem",
+        "summary": "Remove uma pe\u00e7a com base no nome",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nome"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pe\u00e7a removida com sucesso"
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "security": []
+}
