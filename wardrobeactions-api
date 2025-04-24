@@ -1,3 +1,4 @@
+
 openapi: 3.1.0
 info:
   title: Wardrobe API
@@ -53,14 +54,17 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  nome:
-                    type: string
-                  categoria:
-                    type: string
+              type: object
+              properties:
+                roupas:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      nome:
+                        type: string
+                      categoria:
+                        type: string
       responses:
         '200':
           description: Guarda-roupa redefinido
