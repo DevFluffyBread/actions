@@ -1,4 +1,3 @@
-
 openapi: 3.1.0
 info:
   title: Wardrobe API
@@ -9,8 +8,8 @@ servers:
 paths:
   /add:
     post:
-      summary: Adiciona uma peça ao guarda-roupa
       operationId: addItem
+      summary: Adiciona uma peça ao guarda-roupa
       requestBody:
         required: true
         content:
@@ -28,17 +27,40 @@ paths:
       responses:
         '200':
           description: Peça adicionada com sucesso
+
   /items:
     get:
-      summary: Lista todas as peças do guarda-roupa
       operationId: listItems
+      summary: Lista todas as peças do guarda-roupa
       responses:
         '200':
           description: Lista de peças
+
   /looks:
     get:
-      summary: Sugere um look com base nas peças existentes
       operationId: suggestLook
+      summary: Sugere um look com base nas peças existentes
       responses:
         '200':
           description: Look sugerido
+
+  /reset:
+    post:
+      operationId: resetWardrobe
+      summary: Substitui todas as peças por uma nova lista
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  nome:
+                    type: string
+                  categoria:
+                    type: string
+      responses:
+        '200':
+          description: Guarda-roupa redefinido
