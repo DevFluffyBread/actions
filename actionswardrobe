@@ -68,3 +68,26 @@ paths:
       responses:
         '200':
           description: Guarda-roupa redefinido
+
+  /remove:
+    post:
+      operationId: removeItem
+      summary: Remove uma peça com base no nome
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+              required:
+                - nome
+      responses:
+        '200':
+          description: Peça removida com sucesso
+
+components:
+  securitySchemes: {}
+security: []
