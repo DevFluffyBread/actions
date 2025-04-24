@@ -88,6 +88,5 @@ paths:
         '200':
           description: Peça removida com sucesso
 
-components:
-  securitySchemes: {}
+components: {}
 security: []
